@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const userRoute = require('./routes/userRoute')
 const productRoute = require('./routes/productRoute')
-const errorHandler = require("./middleWare/errormiddleWare.js")
+const errorHandler = require("./middleWare/errormiddleware.js")
 //middleWare\errormiddleWare.js
 const cookieParser = require('cookie-parser')
 const path=require("path")
