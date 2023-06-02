@@ -6,7 +6,6 @@ const cors = require('cors')
 const userRoute = require('./routes/userRoute')
 const productRoute = require('./routes/productRoute')
 const errorHandler = require("./middleWare/errorMiddleware")
-//middleWare\errormiddleWare.js
 const cookieParser = require('cookie-parser')
 const path=require("path")
 const contactRoute=require("./routes/contactRoute")
@@ -17,7 +16,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors({
-       origin:["http://localhost:3000"],
+       origin:["http://localhost:3000","https://inventory-app-opal.vercel.app/"],
        credentials:true
 }))
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -34,6 +33,7 @@ app.use("/api/contactus", contactRoute);
 app.use(errorHandler)
 const PORT = process.env.PORT || 5000
 //connect to mongodb and start server
+mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, () => {
